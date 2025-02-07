@@ -48,7 +48,8 @@ class Point3D(Point2d):
     def getAsList(self):
         return [self.getX(), self.getY(), self.getZ()]
     def print(self):
-        print(self.getX(),self.getY(), self.getZ())   
+        print(self.getX(),self.getY(), self.getZ()) 
+        print("Cambio")  
 
 if __name__=="__main__":
     p1=Point3D(1,1,1)
