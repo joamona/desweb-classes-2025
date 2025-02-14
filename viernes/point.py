@@ -1,4 +1,4 @@
-class Point2d:
+class Point2D:
     def __init__(self, x, y):
         self._x=None
         self._y=None
@@ -29,7 +29,7 @@ class Point2d:
     def print(self):
         print(self.getX(),self.getY())
 
-class Point3D(Point2d):
+class Point3D(Point2D):
     def __init__(self, x, y, z):
         super().__init__(x, y)
         self._z=None
@@ -51,11 +51,64 @@ class Point3D(Point2d):
         print(self.getX(),self.getY(), self.getZ()) 
         print("Cambio")  
 
+
+class Po2d:
+    def __init__(self,l: list[Point2D]):
+        self.l:list[Point2D]=l
+    def sumXY(self):
+        
+        return [self._sumCoordinate('_x'), self._sumCoordinate('_y')]
+    def _sumCoordinate(self,propertyName):
+        sum=0
+        for p in self.l:
+            sum+=getattr(p,propertyName)
+        return sum
+    
+class Po3D(Po2d):
+    def __init__(self, l:list[Point3D]):
+        super().__init__(l)
+        self.pp:list[Point3D]=None
+    def sumXYZ(self):
+        l2=self.sumXY()
+        l2.append(self._sumCoordinate('_z'))
+        return l2
+
+
+
+
+def sumaNPrimerosNumeros(n):
+    a=1
+    b=2
+    c=a+b
+    sum=0
+    for i in range(n):
+        i=i+1
+        print(i)
+        sum = sum + i
+        print(sum)
+
+def getMinOfList(l):
+    min=l[0]
+    for e in l:
+        if e<min:
+            min = e
+    return min
+
 if __name__=="__main__":
-    p1=Point3D(1,1,1)
+    """p1=Point3D(1,1,1)
 
     p1.print()
     p1.translate(5,6,7)
     print(p1.getAsList())
     p1.print()
+    """
+    #sumaNPrimerosNumeros(5)
 
+
+    p1=Point3D(10,10,10)
+    p2=Point3D(20,30,40)
+    l=[p1,p2]
+
+    po3=Po3D(l)
+    print(po3.sumXYZ())
+    print(po3._sumCoordinate('_x'))
